@@ -254,6 +254,10 @@ Public Class Frm_Etiquetas
                                 Imprimir_Unidad(Dtg_Etiqueta.Rows(i).Cells(1).Value.ToString().Trim, Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim), "$" & Dtg_Etiqueta.Rows(i).Cells(4).Value.ToString().Trim,
                                     "$" & Dtg_Etiqueta.Rows(i).Cells(5).Value.ToString().Trim, "", Dtg_Etiqueta.Rows(i).Cells(6).Value.ToString().Trim, "", "2 Precios")
                             End If
+                        Case 9
+                            Imprimir_Tres_Precios(Dtg_Etiqueta.Rows(i).Cells(1).Value.ToString().Trim, Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim), "$" & Dtg_Etiqueta.Rows(i).Cells(4).Value.ToString().Trim,
+                                "$" & Dtg_Etiqueta.Rows(i).Cells(5).Value.ToString().Trim, "$", Dtg_Etiqueta.Rows(i).Cells(6).Value.ToString().Trim, "$" & Dtg_Etiqueta.Rows(i).Cells(6).Value.ToString().Trim, "3 Precios", copias)
+
                     End Select
                 Next
             Next
@@ -737,6 +741,81 @@ Public Class Frm_Etiquetas
         Cadena.Append("P1" & vbLf)
 
         RawPrinterHelper.SendStringToPrinter(Cmb_Impresoras.Text, Cadena.ToString)
+    End Sub
+    Private Sub Imprimir_Tres_Precios(ByVal codigo As String, ByVal descrip As String, ByVal precio1 As String, ByVal precio2 As String, ByVal precio3 As String, ByVal cant2 As String, ByVal cant3 As String, ByVal tipo As String, ByVal copias As String)
+        Dim Cadena As New StringBuilder
+
+
+        Cadena.Append("^XA" & vbLf)
+        Cadena.Append("^MMT" & vbLf)
+        Cadena.Append("^PW243" & vbLf)
+        Cadena.Append("^LL719" & vbLf)
+        Cadena.Append("^LS0" & vbLf)
+        Cadena.Append("^FO80,5^GB0,711,2^FS" & vbLf)
+        ' NOMBRE DEL PRODUCTO
+        Cadena.Append("^FT53,685^A0B,37,38^FH\^CI28^FD" & descrip.Trim & "^FS^CI27" & vbLf)
+        'Cadena.Append("^FT53,675^A0B,37,38^FH\^CI28^FD" & descrip.Trim & "^FS^CI27" & vbLf)
+        Select Case TipLabel
+            Case 0, 10
+
+
+                If tipo.Trim = "Unidad" Then
+                    ' Un solo precio (y,x,rotacion,tipo de letra(1-7),ancho(1-8),alto(1-9),normal(N) reverse(R)
+                    Cadena.Append("A180,250,1,5,2,1,N," & Chr(34) & precio1.Trim & Chr(34) & vbLf)
+                    Cadena.Append("A180,50,1,4,2,1,N," & Chr(34) & "UNIDAD" & Chr(34) & vbLf)
+                    'Cadena.Append("A185,640,2,3,1,1,N," & Chr(34) & codigo.Trim & Chr(34) & vbLf)
+                End If
+                If tipo.Trim = "2 Precios" Then
+
+                    Cadena.Append("LO30,250,160,2" & vbLf)
+                    'TERCERA LINEA VERTICAL (y,x,largo,ancho)
+                    Cadena.Append("LO30,470,160,2" & vbLf)
+
+                    Cadena.Append("A150,39,1,4,3,2,N," & Chr(34) & precio1.Trim & Chr(34) & vbLf)
+                    Cadena.Append("A187,39,1,3,1,1,N," & Chr(34) & "UNIDAD" & Chr(34) & vbLf)
+                    Cadena.Append("A150,255,1,4,3,2,N," & Chr(34) & precio2.Trim & Chr(34) & vbLf)
+                    Cadena.Append("A187,255,1,3,1,1,N," & Chr(34) & "POR " & precio3.Trim & " UNDS." & Chr(34) & vbLf)
+                    Cadena.Append("A150,475,1,4,3,2,N," & Chr(34) & cant2.Trim & Chr(34) & vbLf)
+                    Cadena.Append("A187,475,1,3,1,1,N," & Chr(34) & "POR " & cant3.Trim & " UNDS." & Chr(34) & vbLf)
+                End If
+                If tipo.Trim = "3 Precios" Then
+                    'TERCERA LINEA VERTICAL (y,x,largo,ancho)
+                    Cadena.Append("^FO86,455^GB153,0,2" & "^FS" & vbLf)
+                    'SEGUNDA LINEA VERTICAL (y,x,largo,ancho)
+                    Cadena.Append("^FO86,240^GB153,0,2" & "^FS" & vbLf)
+
+
+                    Cadena.Append("^FT114,226^A0B,34,33^FH\^CI28^FD" & "P.POR CAJA" & "^FS^CI27" & vbLf)
+                    'Cadena.Append("^FT127,255^A0B,34,33^FH\^CI28^FD" & "P.V.P Por Caja" & "^FS^CI27" & vbLf)
+                    Cadena.Append("^FT114,389^A0B,34,33^FH\^CI28^FD" & "POR X6" & "^FS^CI27" & vbLf)
+                    'Cadena.Append("^FT127,416^A0B,34,33^FH\^CI28^FD" & "Por x6" & "^FS^CI27" & vbLf)
+                    Cadena.Append("^FT122,682^A0B,42,43^FH\^CI28^FD" & "POR UNIDAD" & "^FS^CI27" & vbLf)
+                    'Cadena.Append("^FT125,666^A0B,45,46^FH\^CI28^FD" & "POR UNIDAD" & "^FS^CI27" & vbLf)
+                    Cadena.Append("^FT198,675^A0B,73,76^FH\^CI28^FD" & precio1.Trim & "^FS^CI27" & vbLf)
+                    'Cadena.Append("^FT212,665^A0B,68,68^FH\^CI28^FD" & precio1.Trim & "^FS^CI27" & vbLf)
+                    Cadena.Append("^FT189,407^A0B,56,56^FH\^CI28^FD" & precio2.Trim & "^FS^CI27" & vbLf)
+                    Cadena.Append("^FT189,194^A0B,56,56^FH\^CI28^FD" & "$" & cant2.Trim & "^FS^CI27")
+                End If
+                '46 CARACTERES
+                'Cadena.Append("^BY2,3,68^FT21,133^BCN,,Y,N" & vbLf)
+                'Cadena.Append("^FH\^FD>;1234656555>65^FS" & vbLf)
+                'Cadena.Append("^FO7,172^GB698,0,1^FS" & vbLf)
+                'Cadena.Append("^FT220,188^A0N,17,20^FH\^CI28^FD" & Chr(34) & "         " & My.Settings.Almacen & "               " & Chr(34) & "^FS^CI27" & vbLf)
+                'Cadena.Append("A50,33,1,3,1,1,R," & Chr(34) & "                " & My.Settings.Almacen & "               " & Chr(34) & vbLf)
+        End Select
+
+        'Cadena.Append("^PQ" & copias & ",0,1,Y" & vbLf)
+        'Cadena.Append("FE" & vbLf)
+        'Cadena.Append("P1" & copias & vbLf)
+        'Cadena.Append("P" & copias & vbLf)
+        Cadena.Append("^PQ" & copias & ",0,1,Y" & vbLf)
+        Cadena.Append("^XZ")
+        'Cadena.Append("^XZ" & vbLf)
+
+        'Cadena.Append("P" & copias & vbLf)
+
+        RawPrinterHelper.SendStringToPrinter(Cmb_Impresoras.Text, Cadena.ToString)
+
     End Sub
     Private Sub ChkSelec_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkSelec.CheckedChanged
         If ChkSelec.Checked = True Then
