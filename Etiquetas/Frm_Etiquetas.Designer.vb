@@ -247,7 +247,7 @@ Partial Class Frm_Etiquetas
         Me.Cmb_Tipetiqueta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_Tipetiqueta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Cmb_Tipetiqueta.FormattingEnabled = True
-        Me.Cmb_Tipetiqueta.Items.AddRange(New Object() {"Etiqueta por producto", "Etiqueta por número de compra", "Código de Barras", "Etiquetas prendas de vestir", "Código de Barras Sin Precio", "Pequeña", "Amarilla sin precio", "Amarilla con precio", "Amarilla Unidad"})
+        Me.Cmb_Tipetiqueta.Items.AddRange(New Object() {"Etiqueta por producto", "Etiqueta por número de compra", "Código de Barras", "Etiquetas prendas de vestir", "Código de Barras Sin Precio", "Pequeña", "Amarilla sin precio", "Amarilla con precio", "Amarilla Unidad", "Amarilla Tres Precios"})
         Me.Cmb_Tipetiqueta.Location = New System.Drawing.Point(105, 15)
         Me.Cmb_Tipetiqueta.Name = "Cmb_Tipetiqueta"
         Me.Cmb_Tipetiqueta.Size = New System.Drawing.Size(265, 24)

@@ -126,7 +126,7 @@ Public Class Query
             Throw New Exception(ex.Message)
         End Try
     End Function
-    Public Function MostrarProductosCompra(ByVal compra As String, ByVal ip As String) As Boolean
+    Public Function MostrarProductosCompra(ByVal Cod_Empresa As String, ByVal ip As String) As Boolean
 
         '''Preguntar a Caleb
         Dim CadConsulta As New StringBuilder
@@ -136,7 +136,7 @@ Public Class Query
         CadConsulta.Append("select codigo,codigo_barra,descripcion1,pvp1,pvp2,pvp3, " & vbLf)
         CadConsulta.Append("0 as cantidad2'" & ip & "'" & vbLf)
         CadConsulta.Append(" from dba.in_item  " & vbLf)
-        CadConsulta.Append("where empresa = '" & compra & "' ")
+        CadConsulta.Append("where empresa = '" & Cod_Empresa & "' ")
         CadConsulta.Append(" " & vbLf)
         Try
             Return tb_datos.Modificar_Registros_Sybase(CadConsulta.ToString)

@@ -221,7 +221,7 @@ Public Class Frm_Etiquetas
                             'End If
                         Case 2
                             descripcion1 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim)
-                            descripcion2 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(1).Value.ToString().Trim)
+                            'descripcion2 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim)
                             Imprimir_Codbar(descripcion1, descripcion2, Dtg_Etiqueta.Rows(i).Cells(1).Value.ToString, Dtg_Etiqueta.Rows(i).Cells(4).Value.ToString)
                         Case 3
                             descripcion1 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim)
@@ -234,7 +234,7 @@ Public Class Frm_Etiquetas
                             End If
                         Case 4
                             descripcion1 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim)
-                            descripcion2 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(1).Value.ToString().Trim)
+                            'descripcion2 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(1).Value.ToString().Trim)
                             Imprimir_CodbarSinPrecio(descripcion1, descripcion2, Dtg_Etiqueta.Rows(i).Cells(2).Value.ToString, Dtg_Etiqueta.Rows(i).Cells(4).Value.ToString)
                         Case 5
                             descripcion1 = Longitud_descrip(Dtg_Etiqueta.Rows(i).Cells(3).Value.ToString().Trim)
@@ -613,9 +613,9 @@ Public Class Frm_Etiquetas
         Cadena.Append("A1,15,0,2,1,1,N," & Chr(34) & My.Settings.Almacen & Chr(34) & vbLf)
         Cadena.Append("A1,35,0,3,1,1,N," & Chr(34) & "----------------------" & Chr(34) & vbLf)
         Cadena.Append("A10,50,0,1,1,1,N," & Chr(34) & descrip1.Trim & Chr(34) & vbLf)
-        'Cadena.Append("A10,65,0,1,1,1,N," & Chr(34) & descrip2.Trim & Chr(34) & vbLf)
+        Cadena.Append("A10,65,0,1,1,1,N," & Chr(34) & descrip2.Trim & Chr(34) & vbLf)
         Cadena.Append("B10,80,0,1,2,4,50,B," & Chr(34) & codbar.Trim & Chr(34) & vbLf)
-        Cadena.Append("A10,165,0,1,1,2,B," & Chr(34) & descrip2.Trim & Chr(34) & vbLf)
+        Cadena.Append("A10,165,0,1,1,2,B," & Chr(34) & codbar.Trim & Chr(34) & vbLf)
         Cadena.Append("A220,80,0,3,1,3,N," & Chr(34) & "$ " & precio.Trim & Chr(34) & vbLf)
         Cadena.Append("FE" & vbLf)
         Cadena.Append("P1" & vbLf)
@@ -639,9 +639,9 @@ Public Class Frm_Etiquetas
         Cadena.Append("A1,15,0,3,1,1,N," & Chr(34) & My.Settings.Almacen & Chr(34) & vbLf)
         Cadena.Append("A1,35,0,3,1,1,N," & Chr(34) & "----------------------" & Chr(34) & vbLf)
         Cadena.Append("A10,50,0,1,1,1,N," & Chr(34) & descrip1.Trim & Chr(34) & vbLf)
-        'Cadena.Append("A10,65,0,1,1,1,N," & Chr(34) & descrip2.Trim & Chr(34) & vbLf)
+        Cadena.Append("A10,65,0,1,1,1,N," & Chr(34) & descrip2.Trim & Chr(34) & vbLf)
         Cadena.Append("B10,80,0,1,2,4,50,B," & Chr(34) & codbar.Trim & Chr(34) & vbLf)
-        Cadena.Append("A10,165,0,1,1,2,B," & Chr(34) & descrip2.Trim & Chr(34) & vbLf)
+        Cadena.Append("A10,165,0,1,1,2,B," & Chr(34) & codbar.Trim & Chr(34) & vbLf)
         Cadena.Append("A220,80,0,3,1,3,N," & Chr(34) & "" & Chr(34) & vbLf)
         Cadena.Append("FE" & vbLf)
         Cadena.Append("P1" & vbLf)

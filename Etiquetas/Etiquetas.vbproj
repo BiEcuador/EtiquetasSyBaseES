@@ -180,6 +180,7 @@
     <ProjectReference Include="..\LogicaNegocio\LogicaNegocio.vbproj">
       <Project>{8d47f431-0e93-402e-bb42-d93a1167f737}</Project>
       <Name>LogicaNegocio</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
