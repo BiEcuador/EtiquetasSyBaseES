@@ -756,7 +756,7 @@ Public Class Frm_Etiquetas
         Cadena.Append("^FT53,685^A0B,37,38^FH\^CI28^FD" & descrip.Trim & "^FS^CI27" & vbLf)
         'Cadena.Append("^FT53,675^A0B,37,38^FH\^CI28^FD" & descrip.Trim & "^FS^CI27" & vbLf)
         Select Case TipLabel
-            Case 0, 10
+            Case 0, 9
 
 
                 If tipo.Trim = "Unidad" Then
