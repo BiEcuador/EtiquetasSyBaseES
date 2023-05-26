@@ -3,7 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="Almacen" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Bodega Bowen 2</Value>
+      <Value Profile="(Default)">COMERCIAL ROMERO REYNA</Value>
+    </Setting>
+    <Setting Name="ListaEtiquetas" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0,,,,5,,,</Value>
+    </Setting>
+    <Setting Name="DarkEtiqueta" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
     </Setting>
   </Settings>
 </SettingsFile>

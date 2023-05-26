@@ -748,6 +748,7 @@ Public Class Frm_Etiquetas
 
         Cadena.Append("^XA" & vbLf)
         Cadena.Append("^MMT" & vbLf)
+        Cadena.Append("~SD" & My.Settings.DarkEtiqueta & vbLf)
         Cadena.Append("^PW243" & vbLf)
         Cadena.Append("^LL719" & vbLf)
         Cadena.Append("^LS0" & vbLf)
